@@ -1,11 +1,12 @@
 package com.jzb.leetcode;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TwoSum {
 	
-	// time : O(n)
+	// time : O(n^2)
 	// space : O(1)
 	public static int[] twoSum(int[] nums, int target) {
         for (int i = 0; i < nums.length - 1; i++) {
@@ -19,7 +20,8 @@ public class TwoSum {
         throw new IllegalArgumentException("No two sum solution.");
     }
 	
-	//
+	// time	: O(n)
+	// space : O(n)
 	public static int[] twoSum2(int[] nums, int target) {
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		for (int i = 0; i < nums.length; i++) {
@@ -47,7 +49,7 @@ public class TwoSum {
 		int[] nums = {2, 7, 11, 15};
 		int target = 9;
 		
-		System.out.println(twoSum(nums, target).length);
+		System.out.println(Arrays.toString(twoSum2(nums, target)));
 	}
 
 }
