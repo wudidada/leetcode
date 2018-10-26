@@ -2,10 +2,37 @@ package com.jzb.leetcode;
 
 public class LongestPalindromicSubstring {
 
-
+	/**
+	 * 原始方案 比较慢
+	 * @param s
+	 * @return
+	 */
     public static String longestPalindrome(String s) {
-
-        return null;
+    	
+    	for (int i = s.length(); i >= 1; i--) {
+    		int k = 0;
+    		for (int j = 0; i + j <= s.length(); j++) {
+    			boolean isBreak = false;
+    			k = j;
+    			for (; k <= j + (i - 1) / 2; k++) {
+    				
+    				//System.out.println(s.charAt(k) + "<=>" + s.charAt(i - k - 1 + j) );
+    				
+    				if (s.charAt(k) != s.charAt(j + j - k + i - 1)) {
+    					isBreak = true;
+    					break;
+    				}
+    			}
+    			
+    			k--;
+    			
+    			if (!isBreak && k == j + (i - 1) / 2) {
+    				int lastIndex = j + i > s.length() ? 0 : j + i;
+    				return s.substring(j, lastIndex);
+    			}
+    		}
+    	}
+        return "";
     }
 
     /**
@@ -21,4 +48,7 @@ public class LongestPalindromicSubstring {
      * Input: "cbbd"
      * Output: "bb"
      */
+    public static void main(String[] args) {
+    	System.out.println(longestPalindrome("civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"));
+	}
 }
